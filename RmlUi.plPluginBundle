@@ -1,0 +1,23 @@
+// for a description of the options see:
+// https://plengine.net/pages/docs/editor/editor-plugins.html
+
+PluginInfo
+{
+	string %DisplayName{"RML UI"}
+	string %Category{"UI"}
+	string %MinEngineVersion{"0.7.0"}
+	string %MaxEngineVersion{"0.7.0"}
+	string %Icon{"RmlUiIcon.png"}
+    string %Banner{"RmlUiBanner.png"}
+	string %Description{"Adds support for graphical user interfaces using RmlUI."}
+	string %EditorPlugins{"plEditorPluginRmlUi"}
+	string %EditorEnginePlugins{"plEnginePluginRmlUi"}
+	string %RuntimePlugins{"plRmlUiPlugin"}
+	// RmlCore.dll is dropped: it is statically linked into plRmlUiPlugin and no
+	// such file has ever existed in Binaries.
+	string %PackageDependencies{"freetype.dll", "freetype-LICENSE.txt"}
+	string %RequiredPlugins{}
+	string %ExclusiveFeatures{}
+	string %EnabledInTemplates{}
+	string %PlasmaBuildTargetName{"RmlUiPlugin"}
+}

@@ -1,0 +1,60 @@
+// plasma.rmlui — RmlUi, HTML/CSS-style in-game user interface.
+//
+// The AUTHORED manifest, kept in source next to the plugin. It declares identity, compatibility,
+// what to load and what to ship. Component hashes and sizes are NOT here: the packaging step
+// computes those and emits them into the published manifest that ships inside the .plpkg.
+//
+// Field reference and validation rules: Docs/PluginPackageManagerPlan.html §05.
+
+PackageInfo
+{
+	// ---- identity -------------------------------------------------------------
+	// Version starts at 1.0.0 rather than inheriting an engine version: this package
+	// versions on its own changes from now on, not on the engine's.
+	string %Id{"plasma.rmlui"}
+	string %Version{"1.0.0"}
+	string %Publisher{"PlasmaTechnology"}
+	string %License{"MIT"}
+	string %Homepage{"https://plasmagameengine.com"}
+
+	// ---- compatibility --------------------------------------------------------
+	// Must equal plSdkVersion::GetAbiTag() of the engine these binaries were built
+	// against. The build configuration is part of it - a Development and a Shipping
+	// build do not share a binary interface.
+	string %MinEngineVersion{"0.7.0"}
+	string %MaxEngineVersion{"0.7.0"}
+	string %AbiTag{"win64-msvc19-0.7.0-dev"}
+
+	// ---- presentation ---------------------------------------------------------
+	string %DisplayName{"RML UI"}
+	string %Category{"UI"}
+	string %Description{"In-game user interface built from HTML and CSS-like documents, powered by RmlUi.
+
+Self-contained: RmlUi and its SVG support are compiled into the plugin, and the FreeType font library ships with it under the FreeType License."}
+	string %Icon{"Branding/RmlUiIcon.png"}
+	string %Banner{"Branding/RmlUiBanner.png"}
+
+	// ---- binaries -------------------------------------------------------------
+	// RmlCore, RmlDebugger, RmlSvg and lunasvg are all folded into plRmlUiPlugin, so
+	// the only redistributable is FreeType. The bundle used to list "RmlCore.dll"
+	// too, but no such file has ever existed in Binaries - it is statically linked -
+	// so that entry is dropped rather than carried forward.
+	string %EditorPlugins{"plEditorPluginRmlUi"}
+	string %EditorEnginePlugins{"plEnginePluginRmlUi"}
+	string %RuntimePlugins{"plRmlUiPlugin"}
+	string %PackageDependencies{"freetype.dll", "freetype-LICENSE.txt"}
+
+	// ---- dependencies ---------------------------------------------------------
+	// plEditorPluginRmlUi defines an asset document type, so it builds on
+	// EditorPluginAssets and must load after it. plasma.assets is a built-in - it
+	// ships with the engine - but it is declared like anything else so the store
+	// can reason about it.
+	Requires { string %Id{"plasma.assets"} string %Range{"^1.0"} }
+
+	// ---- components -----------------------------------------------------------
+	Component { string %Name{"manifest"} string %Platform{"any"} }
+	Component { string %Name{"runtime-win64"} string %Platform{"win64"} }
+	Component { string %Name{"editor-win64"} string %Platform{"win64"} }
+	Component { string %Name{"icon"} string %Platform{"any"} }
+	Component { string %Name{"banner"} string %Platform{"any"} }
+}

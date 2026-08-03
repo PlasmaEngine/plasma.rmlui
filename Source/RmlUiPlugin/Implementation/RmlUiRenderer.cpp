@@ -9,7 +9,7 @@
 #include <RendererCore/Shader/ShaderResource.h>
 #include <RendererFoundation/Resources/Texture.h>
 
-#include <RendererCore/../../../Data/Plugins/Shaders/RmlUiBlitConstants.h>
+#include <Shaders/RmlUiBlitConstants.h>
 
 // clang-format off
 PL_BEGIN_DYNAMIC_REFLECTED_TYPE(plRmlUiRenderData, 1, plRTTINoAllocator)

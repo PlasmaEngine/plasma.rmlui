@@ -13,8 +13,9 @@ public class RmlUiPluginModule : ModuleRules
         PublicDependencies.Add("RmlCoreModule");
         PublicDependencies.Add("RmlDebuggerModule");
 
-        // Shader headers shared with the engine's base data directory. In the engine tree this was
-        // a relative hop out of the plugin folder; here it resolves against the SDK.
+        // This package's own shader headers, shared between C++ and HLSL, plus the engine's under
+        // the SDK's base data directory. Both have to be reachable by the same name from either side.
+        PrivateIncludePaths.Add(Path.Combine(context.ProjectRoot, "Assets"));
         PrivateIncludePaths.Add(Path.Combine(PlasmaPackageSdk.Root, "Data", "Base"));
 
         // RmlCore links freetype, so the DLL has to travel with this plugin.

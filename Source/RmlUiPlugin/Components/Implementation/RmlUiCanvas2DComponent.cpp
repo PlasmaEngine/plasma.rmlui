@@ -186,6 +186,7 @@ void plRmlUiCanvas2DComponent::OnMsgExtractRenderData(plMsgExtractRenderData& ms
     pRenderData->m_vOffset = m_vFinalOffset;
 
     msg.AddRenderData(pRenderData, plDefaultRenderDataCategories::GUI, plRenderData::Caching::Never);
+    msg.AddDependency(m_hTexture, plDefaultRenderDataCategories::GUI, plGALResourceState::ShaderRead, plGALShaderStageFlags::PixelShader);
   }
 }
 

@@ -2,6 +2,7 @@
 
 #include <EditorPluginRmlUi/RmlUiAsset/RmlUiAsset.h>
 #include <Foundation/IO/FileSystem/FileReader.h>
+#include <GuiFoundation/UIServices/UIServices.h>
 #include <ToolsFoundation/Project/ToolsProject.h>
 
 plStringView FindNextHREF(plStringView& ref_sRml)
@@ -62,7 +63,7 @@ void plRmlUiAssetDocument::OpenExternalEditor()
 
   if (!plFileSystem::ExistsFile(sFile))
   {
-    plQtUiServices::GetSingleton()->MessageBoxInformation(plFmt("Can't find the file '{}'.\nTo create an RML file click the button next to 'RmlFile'.", sFile));
+    plEditorUiServices::MessageBoxInformation(plFmt("Can't find the file '{}'.\nTo create an RML file click the button next to 'RmlFile'.", sFile));
 
     ShowDocumentStatus("RML file doesn't exist.");
     return;
@@ -73,15 +74,12 @@ void plRmlUiAssetDocument::OpenExternalEditor()
     return;
 
   {
-    QStringList args;
+    const plString args[] = {plToolsProject::GetSingleton()->GetProjectDirectory(), sFileAbs};
 
-    args.append(plMakeQString(plToolsProject::GetSingleton()->GetProjectDirectory()));
-    args.append(sFileAbs.GetData());
-
-    if (plQtUiServices::OpenInVsCode(args).Failed())
+    if (plEditorUiServices::OpenInVsCode(args).Failed())
     {
       // try again with a different program
-      plQtUiServices::OpenFileInDefaultProgram(sFileAbs);
+      plEditorUiServices::OpenFileInDefaultProgram(sFileAbs);
     }
   }
 }

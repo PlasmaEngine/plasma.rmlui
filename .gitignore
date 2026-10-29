@@ -8,6 +8,8 @@ Output/
 *.exp
 *.lib
 *.dll
+!ThirdParty/RmlUi/Dependencies/freetype/win/x64/freetype.dll
+!ThirdParty/RmlUi/Dependencies/freetype/win/x64/freetype.lib
 *.link.rsp
 
 # Generated Qt sources (moc/uic/rcc)

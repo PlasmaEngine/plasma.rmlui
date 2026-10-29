@@ -18,7 +18,7 @@ public class EditorPluginRmlUiModule : ModuleRules
 
         PublicDependencies.Add("RmlCoreModule");
 
-        PlasmaPackageQt.ConfigureQtModule(this, context, "EditorPluginRmlUiModule",
-            "Source/EditorPluginRmlUi", "Core", "Gui", "Widgets");
+        // The package's editor icons register with the engine-drawn editor UI.
+        PlasmaPackageSdk.AddImportLibrary(this, context, "plEditorUi");
     }
 }

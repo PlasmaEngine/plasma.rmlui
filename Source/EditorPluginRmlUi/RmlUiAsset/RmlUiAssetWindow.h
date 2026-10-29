@@ -1,18 +1,16 @@
 #pragma once
 
 #include <EditorEngineProcessFramework/EngineProcess/ViewRenderSettings.h>
-#include <EditorFramework/DocumentWindow/EngineDocumentWindow.moc.h>
+#include <EditorFramework/DocumentWindow/EngineDocumentWindow.h>
 #include <EditorPluginRmlUi/RmlUiAsset/RmlUiAsset.h>
 #include <ToolsFoundation/Object/DocumentObjectManager.h>
 
-class plQtEngineViewWidget;
+class plEngineViewWidget;
 
-class plQtRmlUiAssetDocumentWindow : public plQtEngineDocumentWindow
+class plRmlUiAssetDocumentWindow : public plEngineDocumentWindow
 {
-  Q_OBJECT
-
 public:
-  plQtRmlUiAssetDocumentWindow(plAssetDocument* pDocument);
+  plRmlUiAssetDocumentWindow(plAssetDocument* pDocument);
 
 protected:
   virtual void InternalRedraw() override;
@@ -21,6 +19,6 @@ private:
   void SendRedrawMsg();
 
   plEngineViewConfig m_ViewConfig;
-  plQtEngineViewWidget* m_pViewWidget;
+  plEngineViewWidget* m_pViewWidget;
   plRmlUiAssetDocument* m_pAssetDoc;
 };

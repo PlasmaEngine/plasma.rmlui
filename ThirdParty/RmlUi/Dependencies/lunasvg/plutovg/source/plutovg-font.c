@@ -707,6 +707,11 @@ plutovg_font_face_t* plutovg_font_face_cache_get(plutovg_font_face_cache_t* cach
 
 #include <sys/mman.h>
 #include <sys/stat.h>
+
+/* Plasma change to upstream: strict C17 builds on glibc do not get PATH_MAX from <limits.h> */
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
 #endif
 
 #ifdef _WIN32

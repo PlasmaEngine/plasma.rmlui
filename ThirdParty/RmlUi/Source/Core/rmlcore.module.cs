@@ -43,6 +43,16 @@ public class RmlCoreModule : ModuleRules
                 PrivateLibraries.Add("ThirdParty/RmlUi/Dependencies/freetype/win/x64/freetype.lib");
             }
         });
+        ConfigureForPlatform(TargetPlatform.Linux, () =>
+        {
+            // the system FreeType, as the engine's EditorUi links it
+            PublicSystemLibraries.Add("freetype");
+        });
+        ConfigureForPlatform(TargetPlatform.Mac, () =>
+        {
+            // the SDK's static FreeType for Apple silicon; this vendored copy has Windows libraries only
+            PrivateLibraries.Add(PlasmaPackageSdk.Root + "/Code/ThirdParty/RmlUi/Dependencies/freetype/mac/arm64/libfreetype.a");
+        });
 
         CppStandard = CppStandard.Cpp20;
         TreatWarningsAsErrors = false;

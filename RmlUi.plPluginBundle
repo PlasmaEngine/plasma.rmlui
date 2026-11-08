@@ -5,8 +5,8 @@ PluginInfo
 {
 	string %DisplayName{"RML UI"}
 	string %Category{"UI"}
-	string %MinEngineVersion{"0.11.2"}
-	string %MaxEngineVersion{"0.11.2"}
+	string %MinEngineVersion{"0.12.0"}
+	string %MaxEngineVersion{"0.12.0"}
 	string %Icon{"RmlUiIcon.png"}
     string %Banner{"RmlUiBanner.png"}
 	string %Description{"Adds support for graphical user interfaces using RmlUI."}

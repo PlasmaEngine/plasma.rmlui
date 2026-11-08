@@ -1,7 +1,7 @@
 #include <EditorPluginRmlUi/EditorPluginRmlUiPCH.h>
 
 #include <EditorPluginRmlUi/RmlUiAsset/RmlUiAssetManager.h>
-#include <EditorPluginRmlUi/RmlUiAsset/RmlUiAssetWindow.moc.h>
+#include <EditorPluginRmlUi/RmlUiAsset/RmlUiAssetWindow.h>
 
 PL_BEGIN_DYNAMIC_REFLECTED_TYPE(plRmlUiAssetDocumentManager, 1, plRTTIDefaultAllocator<plRmlUiAssetDocumentManager>)
 PL_END_DYNAMIC_REFLECTED_TYPE;
@@ -35,7 +35,7 @@ void plRmlUiAssetDocumentManager::OnDocumentManagerEvent(const plDocumentManager
     {
       if (e.m_pDocument->GetDynamicRTTI() == plGetStaticRTTI<plRmlUiAssetDocument>())
       {
-        new plQtRmlUiAssetDocumentWindow(static_cast<plRmlUiAssetDocument*>(e.m_pDocument)); // NOLINT: Not a memory leak
+        new plRmlUiAssetDocumentWindow(static_cast<plRmlUiAssetDocument*>(e.m_pDocument)); // NOLINT: Not a memory leak
       }
     }
     break;

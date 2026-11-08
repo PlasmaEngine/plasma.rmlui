@@ -15,7 +15,7 @@ RmlUi.plPluginBundle    legacy descriptor, kept until the engine reads manifests
 Source/
   RmlUiPlugin/          runtime               -> plRmlUiPlugin
   EnginePluginRmlUi/    editor engine process -> plEnginePluginRmlUi
-  EditorPluginRmlUi/    editor                -> plEditorPluginRmlUi  (Qt: RmlUi asset type)
+  EditorPluginRmlUi/    editor                -> plEditorPluginRmlUi  (RmlUi asset type)
 ThirdParty/
   RmlUi/                upstream RmlUi, its SVG plugin, lunasvg and FreeType
 Configs/                build rules for building against an installed engine SDK
